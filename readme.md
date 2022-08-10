@@ -19,3 +19,26 @@ Apple documentation includes a Handoff tutorial I will be working off of,
 pulling in any other sources as/if needed:
 
 https://developer.apple.com/documentation/foundation/task_management/implementing_handoff_in_your_app
+
+I started off with iOS where I replaced the initial `Text` with a `TextField`
+and I bound its text to a variable on the view. On each change to the binding, I
+think I should update the activity. At the same time, the tutorial says to
+override the `updateUserActivityState` method of the view controller. I don't
+know how to get at the root view controller in Swift and according to this
+Stack Overflow question, it is not exactly straightforward:
+
+https://stackoverflow.com/a/59994872/2715716
+
+There is also this HackingSwift article about view controllers in SwiftUI:
+
+https://www.hackingwithswift.com/books/ios-swiftui/wrapping-a-uiviewcontroller-in-a-swiftui-view
+
+Between these two resources I think there really won't be a simpler way to just
+get at some default/root view controller and I will have to add this noise.
+
+- [ ] Access the view controller and override its `updateUserActivityState`
+- [ ] Validate my `updateUserActivityState` override is being called
+- [ ] Find out by what mechanism I should update the activity (push/pull):
+  - [ ] Find out if I should pro-actively update the activity in the binding
+  - [ ] Find out if I should re-actively update in `updateUserActivityState`
+- [ ] Implement the Handoff handler in the macOS app and see if it gets called

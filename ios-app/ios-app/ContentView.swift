@@ -1,21 +1,27 @@
-//
-//  ContentView.swift
-//  ios-app
-//
-//  Created by Tomas Hubelbauer on 10.08.2022.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+    @State var text: String = ""
+    var activity: NSUserActivity
+    
+    init() {
+        self.activity = NSUserActivity(activityType: "tom")
+        self.activity.isEligibleForHandoff = true
+        self.activity.userInfo = ["text": self.text]
+        self.activity.becomeCurrent()
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        
+    var body: some View {
+        let binding = Binding<String>(
+            get: {
+                self.text
+            },
+            set: {
+                self.text = $0
+                // TODO: Update the activity?
+            }
+        )
+        
+        TextField("Tom", text: binding).padding()
     }
 }
