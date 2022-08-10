@@ -18,7 +18,7 @@ struct ContentView: View {
             },
             set: {
                 self.text = $0
-                // TODO: Update the activity?
+                self.activity.userInfo = ["text": self.text]
             }
         )
         

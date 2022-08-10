@@ -36,6 +36,24 @@ https://www.hackingwithswift.com/books/ios-swiftui/wrapping-a-uiviewcontroller-i
 Between these two resources I think there really won't be a simpler way to just
 get at some default/root view controller and I will have to add this noise.
 
+I ended up not trying this yet and instead just updating the activity instance.
+I still need access to the application delegate in the macOS application to be
+able to listen to the Handoff messages there, so I looked into how to access it
+in a SwiftUI application:
+
+https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-an-appdelegate-to-a-swiftui-app
+
+This article is for iOS but the concept is the same for macOS, just using the
+`NS` prefix instead of `UI`. https://stackoverflow.com/a/71292001/2715716
+
+This alone has not enabled me to receive the Handoff messages in the macOS app
+sent from the iOS app. It looks like I will have to figure out the view
+controller stuff on the iOS side.
+
+I found one more link that looks very promising for this:
+
+https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
+
 - [ ] Access the view controller and override its `updateUserActivityState`
 - [ ] Validate my `updateUserActivityState` override is being called
 - [ ] Find out by what mechanism I should update the activity (push/pull):
