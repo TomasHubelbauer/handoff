@@ -60,3 +60,9 @@ https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit
   - [ ] Find out if I should pro-actively update the activity in the binding
   - [ ] Find out if I should re-actively update in `updateUserActivityState`
 - [ ] Implement the Handoff handler in the macOS app and see if it gets called
+
+I have also found out about Continuation Streams which seem more along the lines
+of what I need for a full two way communication between the iOS app and the
+macOS app:
+
+https://developer.apple.com/documentation/foundation/nsuseractivity
